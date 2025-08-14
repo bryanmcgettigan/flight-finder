@@ -1,13 +1,14 @@
 const express = require('express');
 require('dotenv').config()
 const axios = require('axios'); //Used for fetching from flightAPI Prices
-
+const cors = require("cors")
 const app = express()
 
 const APIKEY = process.env.APIKEY
 const PORT = process.env.PORT 
 
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
 app.get('/onewayFlight/:dest/:dep/:date', async (req,res) => {  
     const { dest, dep, date } = req.params;
