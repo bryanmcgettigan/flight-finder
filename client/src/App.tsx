@@ -26,6 +26,8 @@ const handleAccept = () => {
       setData(data); // store response in state
     })
     .catch((err) => console.error(err));
+
+
 };
 
   return (
@@ -56,7 +58,9 @@ const handleAccept = () => {
         {data && (
           <div className="api-string">
             <strong>API RESPONSE:</strong>
-            <div>data</div>
+            <pre style={{ textAlign: "left", background: "#f4f4f4", padding: "1em", borderRadius: "5px" }}>
+              {JSON.stringify(data, null, 2)}
+            </pre>
           </div>
         )}
       </div>
