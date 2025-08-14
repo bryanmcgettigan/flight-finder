@@ -13,8 +13,14 @@ const ApiResponse: React.FC<ApiResponseProps> = ({ data }) => {
       return data.map((item, idx) =>
         item.price !== undefined ? (
           <div key={idx} style={{ color: "#2a7d2e", marginBottom: "0.5em" }}>
-            <strong>Flight {idx + 1} Price:</strong> ${item.price} 
-            <a href = {item.booking_url} target = "_blank" rel="noopener noreferrer">URL Link</a>
+                <strong>Flight {idx + 1} Price:</strong> €{item.price} 
+                <a 
+                href={`https://skyscanner.net${item.booking_url}`} 
+                target = "_blank" 
+                rel="noopener noreferrer"
+                >
+                URL Link
+                </a>
           </div>
         ) : null
       );
