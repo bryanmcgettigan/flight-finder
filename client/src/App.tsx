@@ -3,6 +3,7 @@ import DateBox from "./components/DateBox"
 import AcceptButton from "./components/AcceptButton"
 import { useState,useEffect } from "react";
 import './App.css';
+import ApiResponse from "./components/ApiResponse";
 
 function App() {
   const [departure, setDeparture] = useState("");
@@ -55,14 +56,7 @@ const handleAccept = () => {
         <div style={{ display: "flex", justifyContent: "center", marginTop: "1.5rem" }}>
           <AcceptButton onClick={handleAccept}>Find Flights</AcceptButton>
         </div>
-        {data && (
-          <div className="api-string">
-            <strong>API RESPONSE:</strong>
-            <pre style={{ textAlign: "left", background: "#f4f4f4", padding: "1em", borderRadius: "5px" }}>
-              {JSON.stringify(data, null, 2)}
-            </pre>
-          </div>
-        )}
+        {data && <ApiResponse data={data} />}
       </div>
     </div>
   )
