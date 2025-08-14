@@ -1,28 +1,37 @@
 import TextBox from "./components/TextBox"
 import DateBox from "./components/DateBox"
 import AcceptButton from "./components/AcceptButton"
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import './App.css';
 
 function App() {
   const [departure, setDeparture] = useState("");
   const [destination, setDestination] = useState("");
   const [date, setDate] = useState("");
-  const APIKEY = "TSTAPIKEY"
+  const [data, setData] = useState(null);
+
 
   const [APIString, setAPIstring] = useState("")
 
-  const handleAccept = () => {
-    console.log("Departure:", departure);
-    console.log("Destination:", destination);
-    console.log("Date:", date);
-    setAPIstring("https://api.flightapi.io/onewaytrip/" + APIKEY + "/" + departure + "/" + destination + "/" + date + "/1/0/0/Economy/EUR")
-  };
+
+  //On pressing the button the request will be sent
+const handleAccept = () => {
+  const url = `http://localhost:8080/onewayFlight/${departure}/${destination}/${date}`;
+  console.log("Requesting:", url);
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      setData(data); // store response in state
+    })
+    .catch((err) => console.error(err));
+};
 
   return (
     <div className="app-bg">
       <div className="app-card">
-        <h2 style={{ textAlign: "center", marginBottom: "2rem", color: "#1976d2", letterSpacing: "1px" }}>
+        <h2 className = "app-h2">
           Flight Finder
         </h2>
         <TextBox
@@ -44,10 +53,10 @@ function App() {
         <div style={{ display: "flex", justifyContent: "center", marginTop: "1.5rem" }}>
           <AcceptButton onClick={handleAccept}>Find Flights</AcceptButton>
         </div>
-        {APIString && (
+        {data && (
           <div className="api-string">
-            <strong>API URL:</strong>
-            <div>{APIString}</div>
+            <strong>API RESPONSE:</strong>
+            <div>data</div>
           </div>
         )}
       </div>
