@@ -43,7 +43,12 @@ app.get('/onewayFlight/:dest/:dep/:date', async (req,res) => {
       };
     });
 
-    res.json(flights);
+        flights.sort((a, b) => Number(a.price) - Number(b.price));
+
+        //Get top 5 cheapest
+        const top5CheapestFlights = flights.slice(0, 5);
+
+        res.json(top5CheapestFlights);
         
     } catch (error) {
         console.error(error);

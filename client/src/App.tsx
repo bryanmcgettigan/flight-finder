@@ -12,7 +12,6 @@ function App() {
   const [data, setData] = useState(null);
 
 
-  const [APIString, setAPIstring] = useState("")
 
 
   //On pressing the button the request will be sent
