@@ -24,5 +24,9 @@ Thumbs.db
 .vscode/
 .idea/
 
+#TimeStamp files
+*.tsbuildinfo
+*.mjs
+
 
 node_modules/
