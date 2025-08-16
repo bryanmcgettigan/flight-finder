@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/ApiResponse.css"
 
 interface ApiResponseProps {
   data: any;
@@ -25,7 +26,7 @@ const ApiResponse: React.FC<ApiResponseProps> = ({ data }) => {
             });
           }
           return (
-            <div key={idx} style={{ color: "#2a7d2e", marginBottom: "0.5em" }}>
+            <div key={idx} className="flight-info">
               <strong>Flight {idx + 1} Price:</strong> €{item.price}
               <br />
               {formattedDeparture && (
@@ -76,15 +77,9 @@ const ApiResponse: React.FC<ApiResponseProps> = ({ data }) => {
 
   return (
     <div className="api-string">
-      <strong>API RESPONSE:</strong>
       {renderPrices()}
       <pre
-        style={{
-          textAlign: "left",
-          background: "#f4f4f4",
-          padding: "1em",
-          borderRadius: "5px",
-        }}
+    className="api-pretty-json"
       ></pre>
     </div>
   );

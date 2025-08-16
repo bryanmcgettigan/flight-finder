@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "devextreme-react": "^25.1.4"
   }
 }

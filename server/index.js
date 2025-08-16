@@ -15,8 +15,7 @@ app.get('/onewayFlight/:dest/:dep/:date', async (req,res) => {
     if (!dest || !dep || !date) {
         return res.status(400).json({ error: "Missing required parameters: dest, dep, date" });
     }
-
-  
+    
     try {
         //const API_URL = `https://api.flightapi.io/onewaytrip/${APIKEY}/${dep}/${dest}/${date}/1/0/0/Economy/EUR`;
         const API_URL = 'http://127.0.0.1:5000/get_response_file'

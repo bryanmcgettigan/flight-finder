@@ -1,0 +1,15 @@
+.api-string {
+  font-family: inherit;
+}
+
+.flight-info {
+  color: #2a7d2e;
+  margin-bottom: 0.5em;
+}
+
+.api-pretty-json {
+  text-align: left;
+  background: #f4f4f4;
+  padding: 1em;
+  border-radius: 5px;
+}

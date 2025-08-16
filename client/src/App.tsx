@@ -1,8 +1,8 @@
 import TextBox from "./components/TextBox"
-import DateBox from "./components/DateBox"
+import DateBoxLocal from "./components/DateBoxLocal"
 import AcceptButton from "./components/AcceptButton"
 import { useState,useEffect } from "react";
-import './App.css';
+import './components/css/App.css'
 import ApiResponse from "./components/ApiResponse";
 
 function App() {
@@ -10,9 +10,6 @@ function App() {
   const [destination, setDestination] = useState("");
   const [date, setDate] = useState("");
   const [data, setData] = useState(null);
-
-
-
 
   //On pressing the button the request will be sent
 const handleAccept = () => {
@@ -48,9 +45,9 @@ const handleAccept = () => {
         >
           Destination Airport Code
         </TextBox>
-        <DateBox
+        <DateBoxLocal
           value={date}
-          onChange={e => setDate(e.target.value)}
+          onChange={setDate}
         />
         <div style={{ display: "flex", justifyContent: "center", marginTop: "1.5rem" }}>
           <AcceptButton onClick={handleAccept}>Find Flights</AcceptButton>
