@@ -17,8 +17,8 @@ app.get('/onewayFlight/:dest/:dep/:date', async (req,res) => {
     }
     
     try {
-        const API_URL = `https://api.flightapi.io/onewaytrip/${APIKEY}/${dep}/${dest}/${date}/1/0/0/Economy/EUR`;
-        //const API_URL = 'http://127.0.0.1:5000/get_response_file'
+        //const API_URL = `https://api.flightapi.io/onewaytrip/${APIKEY}/${dep}/${dest}/${date}/1/0/0/Economy/EUR`;
+        const API_URL = 'http://127.0.0.1:5000/get_response_file'
         const response = await axios.get(API_URL);
         const data = response.data
 
