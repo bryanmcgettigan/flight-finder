@@ -1,7 +1,7 @@
 # ✈️ Flight Finder  
 A simple and fast web app to help you find the **cheapest flights** between your chosen destinations.  
 
-![Flight Finder Example](https://github.com/user-attachments/assets/ed478f98-9604-47bd-a3b2-963ddf245f0f)  
+![Flight Finder Example](./46a57180-19bf-43b8-8c2b-5ce27e9cab1d.png)  
 *Example: Searching for flights from Dublin to Lisbon*  
 
 ---
