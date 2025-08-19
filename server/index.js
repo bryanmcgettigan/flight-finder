@@ -17,8 +17,8 @@ app.get('/onewayFlight/:dest/:dep/:date', async (req,res) => {
     }
     
     try {
-        //const API_URL = `https://api.flightapi.io/onewaytrip/${APIKEY}/${dep}/${dest}/${date}/1/0/0/Economy/EUR`;
-        const API_URL = 'http://127.0.0.1:5000/get_response_file'
+        const API_URL = `https://api.flightapi.io/onewaytrip/${APIKEY}/${dep}/${dest}/${date}/1/0/0/Economy/EUR`;
+        //const API_URL = 'http://127.0.0.1:5000/get_response_file'
         const response = await axios.get(API_URL);
         const data = response.data
 
@@ -27,16 +27,11 @@ app.get('/onewayFlight/:dest/:dep/:date', async (req,res) => {
         const item = itinerary.pricing_options[0].items[0];
 
       return {
-        //id: itinerary.id,
         price: itinerary.pricing_options[0].price.amount,
         currency: "EUR",
         departure: leg.departure,
         arrival: leg.arrival,
         duration: leg.duration,
-        //ops: leg.stop_count,
-        //flight_number: data.segments.find(s => s.id === item.segment_ids[0]).marketing_flight_number,
-        //origin: leg.origin_place_id,
-        //destination: leg.destination_place_id,
         booking_url: item.url,
         provider: item.agent_id
       };
