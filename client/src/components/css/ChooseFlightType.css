@@ -1,0 +1,18 @@
+.choose-flight-type {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.choose-flight-type-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.choose-flight-type-select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
