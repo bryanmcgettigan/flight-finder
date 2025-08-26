@@ -2,20 +2,26 @@ import TextBox from "./components/TextBox"
 import DateBoxLocal from "./components/DateBoxLocal"
 import AcceptButton from "./components/AcceptButton"
 import ChooseFlightType from "./components/ChooseFlightType";
-import { useState } from "react";
+import React, { useState } from "react";
 import './components/css/App.css'
 import ApiResponse from "./components/ApiResponse";
 
 function App() {
   const [departure, setDeparture] = useState("");
   const [destination, setDestination] = useState("");
-  const [flightType, setFlightType] = useState("onewaytrip")
-  const [date, setDate] = useState("");
+  const [flightType, setFlightType] = useState("onewaytrip");
+  const [departDate, setDepartDate] = useState(""); 
+  const [returnDate, setReturnDate] = useState(""); 
   const [data, setData] = useState(null);
 
   //On pressing the button the request will be sent
 const handleAccept = () => {
-  const url = `http://localhost:8080/${flightType}/${departure}/${destination}/${date}`;
+  let url = "";
+  if (flightType === "roundtrip") {
+    url = `http://localhost:8080/roundtrip/${departure}/${destination}/${departDate}/${returnDate}`;
+  } else {
+    url = `http://localhost:8080/onewaytrip/${departure}/${destination}/${departDate}`;
+  }
   console.log("Requesting:", url);
 
   fetch(url)
@@ -52,9 +58,15 @@ const handleAccept = () => {
           Destination Airport Code
         </TextBox>
         <DateBoxLocal
-          value={date}
-          onChange={setDate}
+          value={departDate}
+          onChange={setDepartDate}
         />
+        {flightType === "roundtrip" && (
+          <DateBoxLocal
+            value={returnDate}
+            onChange={setReturnDate}
+          />
+        )}
         <div style={{ display: "flex", justifyContent: "center", marginTop: "1.5rem" }}>
           <AcceptButton onClick={handleAccept}>Find Flights</AcceptButton>
         </div>

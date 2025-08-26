@@ -26,8 +26,14 @@ const DateBoxLocal = ({ value, onChange }: DateBoxLocalProps) => {
         onValueChanged={(e: { value: Date | string | null }) => {
           if (e.value) {
             if (e.value instanceof Date) {
-              const formatted = e.value.toISOString().slice(0, 10);
+              // Format as yyyy-mm-dd in local time
+              const year = e.value.getFullYear();
+              const month = String(e.value.getMonth() + 1).padStart(2, '0');
+              const day = String(e.value.getDate()).padStart(2, '0');
+              const formatted = `${year}-${month}-${day}`;
               onChange(formatted);
+            } else if (typeof e.value === "string") {
+              onChange(e.value);
             }
           }
         }}

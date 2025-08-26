@@ -50,14 +50,14 @@ app.get('/onewaytrip/:dest/:dep/:date', async (req,res) => {
     }
 });
 
-app.get('/roundtrip/:dest/:dep/:date', async (req,res) => {  
-    const { dest, dep, date } = req.params;
-    if (!dest || !dep || !date) {
+app.get('/roundtrip/:dest/:dep/:depdate/:returndate', async (req,res) => {  
+    const { dest, dep, depdate, returndate } = req.params;
+    if (!dest || !dep || !depdate || !returndate) {
         return res.status(400).json({ error: "Missing required parameters: dest, dep, date" });
     }
     
     try {
-        //const API_URL = `https://api.flightapi.io/roundtrip/${APIKEY}/${dep}/${dest}/${date}/1/0/0/Economy/EUR`;
+        //const API_URL = `https://api.flightapi.io/roundtrip/${APIKEY}/${dep}/${dest}/${depdate}/${returndate}/1/0/0/Economy/EUR`;
         const API_URL = 'http://127.0.0.1:5000/get_response_file_round_trip'
         const response = await axios.get(API_URL);
         const data = response.data
